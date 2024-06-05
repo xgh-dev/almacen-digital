@@ -1,0 +1,79 @@
+/*dejar sin estilos predeterminados la hoja como primer paso*/
+*{
+    padding: 0;
+    margin: 0;
+    /*usar la propiedad border box para en caso de agregar un margin o un padding no se nos modifique el contenedor*/
+    box-sizing: border-box;
+}
+
+/*darle estilo al cuerpo*/
+body{
+    color:rgb(245, 245, 245);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    position: relative;
+    height: 100vh;
+    font-weight: bold;
+}
+
+/*darle estilo al cabecero*/
+.cabecero{
+    height: 20vh;/*ajustamos el tamaño del div*/
+    background-size: cover;/*ajusta el tamaño de la imagen de fondo para cubrir el area*/
+    background-position: center;/*centramos la imgagen*/
+    position: relative;/*indica que el elemento está posicionado de manera relativa a su poisicion normal en el flujo del documento. Esto perimte un nuevot contexto de contención para los elementos hijos siendo estos de position: absolute*/
+    width: 100%;/*establecemos que el elemento cabecero sera del ancho del contenedor padre*/
+    background: url(imagen/fondo.png),linear-gradient(to left, #1d0fba, #e40d1b) ;
+}
+
+/*aqui inicia la edicion del contenedor presupuesto del proyecto*/
+/*contenedor presupuesto (padre)*/
+.contenedor-datos {
+    position: absolute;
+    width: 500px;/*definimos el tamaño del contenedor de cada elemento*/
+    top: 50%;/*alineamos este contenedor al 50% del contenedor en eje y*/
+    left: 50%;/*alineamos este contenedor al 50% dek contenedor en eje x*/
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 40px;
+    letter-spacing: 5px;
+}
+
+
+
+/*editamos el titulo*/
+.nombre-empresa{
+    text-align: center;
+
+}
+
+/*editamos el nombre de la app*/
+
+.nombre-programa{
+    text-align: center;
+}
+
+
+
+th{
+    position: sticky;/*evitamos que los titulos se muevan*/
+    top: 0;
+}
+
+
+.tabla-inventario{
+    height: 300px; /* Ajusta la altura según sea necesario */
+    overflow: auto;
+    border: 1px solid #ddd;
+}
+
+.nombre-tabla{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.contenedor-tablas{
+    padding: 0 20px;
+}
