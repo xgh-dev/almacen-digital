@@ -23,7 +23,7 @@ body{
     background-position: center;/*centramos la imgagen*/
     position: relative;/*indica que el elemento está posicionado de manera relativa a su poisicion normal en el flujo del documento. Esto perimte un nuevot contexto de contención para los elementos hijos siendo estos de position: absolute*/
     width: 100%;/*establecemos que el elemento cabecero sera del ancho del contenedor padre*/
-    background: url(imagen/fondo.png),linear-gradient(to left, #1d0fba, #e40d1b) ;
+    background: linear-gradient(to left, #1d0fba, #e40d1b) ;
 }
 
 /*aqui inicia la edicion del contenedor presupuesto del proyecto*/
