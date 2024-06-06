@@ -77,3 +77,9 @@ th{
 .contenedor-tablas{
     padding: 0 20px;
 }
+
+/*boton de estado de la lista*/
+.boton-estado{
+    width: 40px;
+    box-sizing: border-box;
+}

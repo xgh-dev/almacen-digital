@@ -2,6 +2,10 @@
 const arrayHerramientas = [
     new Herramienta("C1", "martillo", 1),
 ];
+const arrayHerramientasPrestadas = [
+
+];
+
 
 // Menu de cargar app mediante onload en el HTML
 window.onload = () => {
@@ -31,7 +35,7 @@ const crearHerramientaHtml = (herramienta) => {
             <th scope="row">${herramienta.id}</th>
             <td>${herramienta.herramienta}</td>
             <td>${herramienta.cantidad}</td>
-            <td><button>${herramienta.estado}</button></td>
+            <td><button class="boton-estado" onclick="prestarHerramienta('${herramienta.id}')">${herramienta.estado}</button></td> 
         </tr>
     `;
     // Retornamos la variable
@@ -63,17 +67,29 @@ const agregarHerramienta = () => {
 
 const eliminarHerramienta = (id,nombre) => {
     let herrmaientaEliminar = arrayHerramientas.findIndex(equipo => equipo.id === id || equipo.nombre === nombre)
+    //console.log(herrmaientaEliminar)
     arrayHerramientas.splice(herrmaientaEliminar,1);
     cargarHerramientas();
 }
 
 //funicon de busqueda para despues
-const buscarHerramienta = (id,nombre) => {
+/*const buscarHerramienta = (id,nombre) => {
 
-}
+}*/
 
 
 //funicon de prestamo de herramientas
-const prestarHerramienta = () => {
-
+const prestarHerramienta = (id) => {
+    //console.log(id)
+    let seleccionarHerramienta = arrayHerramientas.findIndex(equipo => equipo.id === id)
+    //esta nos devolvera un atributo del objeto seleccionado 
+    let estado = arrayHerramientas[seleccionarHerramienta]["estado"];
+    if (estado == "IN"){
+        //estado = "No disponible"
+        arrayHerramientas[seleccionarHerramienta]["estado"] = "OUT"
+    }
+    //console.log(estado);
+    //cargamos el render de la pagina
+    cargarHerramientas();
+    cargarHerramientasPrestadas();
 }

@@ -7,7 +7,7 @@ class Herramienta {
         this._id = id;
         this._herramienta = herramienta;
         this._cantidad = cantidad;
-        this._estado = "Disponible";
+        this._estado = "IN";
     }
 
     // Establecemos los get y los set para hacer privado el constructor
