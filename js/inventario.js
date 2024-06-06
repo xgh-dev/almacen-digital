@@ -2,12 +2,12 @@
 
 class Herramienta {
     // Crear el constructor que nos cree los nuevos objetos que almacenaremos en la lista
-    constructor(id, herramienta, cantidad, estado) {
+    constructor(id, herramienta, cantidad) {
         // Creamos los atributos de la clase, mediante this
         this._id = id;
         this._herramienta = herramienta;
         this._cantidad = cantidad;
-        this._estado = estado;
+        this._estado = "Disponible";
     }
 
     // Establecemos los get y los set para hacer privado el constructor

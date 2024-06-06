@@ -22,8 +22,21 @@
             </div>
     </div>
     <!-------------------------------------------->
-    <!--formulario de busqueda-->
-    
+    <!--formulario de manipulacion de tabla-->
+    <form id="formulario-operacion" onsubmit="return false">
+      <div class="agregar">
+        <div class="agregar_contenedor">
+          <select name="" id="operacion" class="tipo-operacion">
+            <option value="agregar" selected>Add</option>
+            <option value="eliminar">Delete</option>
+          </select>
+          <input type="text" id="id" class="id-herramienta" placeholder="ID">
+          <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
+          <input type="text" id="cantidad" class="cantidad-herramienta" placeholder="Cantidad">
+          <button class="agregar_btn" onclick="agregarHerramienta()"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
+        </div>  
+      </div>
+    </form>
     <!--crear los formatos de tablas-->
     <div class="contenedor-tablas">
         <div class="nombre-tabla">INVENTARIO</div>
@@ -109,7 +122,7 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
-                    <td>@mdo</td>
+                    <td><button>Estado</button></td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>

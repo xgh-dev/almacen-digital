@@ -1,6 +1,6 @@
 // Crear los arrays que nos guarden nuestros objetos
 const arrayHerramientas = [
-    new Herramienta("C1", "martillo", 1, "disponible"),
+    new Herramienta("C1", "martillo", 1),
 ];
 
 // Menu de cargar app mediante onload en el HTML
@@ -31,9 +31,49 @@ const crearHerramientaHtml = (herramienta) => {
             <th scope="row">${herramienta.id}</th>
             <td>${herramienta.herramienta}</td>
             <td>${herramienta.cantidad}</td>
-            <td>${herramienta.estado}</td>
+            <td><button>${herramienta.estado}</button></td>
         </tr>
     `;
     // Retornamos la variable
     return ingresoTemplate;
 };
+
+//crear la funcion que agregue datos que se envien desde el formulario 
+const agregarHerramienta = () => {
+    //escribir las llamadas realizadas al formulario y guardarlas en variables que hagan referencias a su nombre 
+    //llamar al formulario 
+    let formulario = document.forms["formulario-operacion"];
+    //obtener sus componentes mediante los imputs
+    let operacion = formulario["operacion"];
+    let id = formulario["id"]
+    let herramienta = formulario["nombre"];
+    let cantidad = formulario["cantidad"];
+    
+    //seguiremos con la evaluacion de los inputs enviados
+    if (id.value !== "" && herramienta.value !== "" && cantidad.value !== ""){
+        if (operacion.value === "agregar"){
+            arrayHerramientas.push(new Herramienta(id.value,herramienta.value,+cantidad.value))
+            //llamamos a las funciones que carguen la estructura del html
+            cargarHerramientas();
+        }
+    } else if (operacion.value === "eliminar" && (id.value !== "" || herramienta.value !== "")){
+        eliminarHerramienta(id.value,herramienta.value);
+    }
+}
+
+const eliminarHerramienta = (id,nombre) => {
+    let herrmaientaEliminar = arrayHerramientas.findIndex(equipo => equipo.id === id || equipo.nombre === nombre)
+    arrayHerramientas.splice(herrmaientaEliminar,1);
+    cargarHerramientas();
+}
+
+//funicon de busqueda para despues
+const buscarHerramienta = (id,nombre) => {
+
+}
+
+
+//funicon de prestamo de herramientas
+const prestarHerramienta = () => {
+
+}
