@@ -132,9 +132,22 @@ const cearHerramientasPrestadasHtml = (prestar) => {
         <td>${prestar.herramienta}</td>
         <td>${prestar.cantidad}</td>
         <td>${prestar.usuario}</td>
+        <td><button onclick="devolverrHerramienta('${prestar.id}')">Entregar</button></td>
     </tr>
     `
+    //estructura que usaremos para el boton que regrese la herramienta
+    //<td><button onclick="devolverrHerramienta('${herramienta.id}')">Entregar</button></td>
+
     //retornamos
     return estructura
 }
 
+//crear la funcion que devuelva laas herramientas, esto debe eliminarlas de la lista
+const devolverrHerramienta = (id) => {
+    //crear una variable que busque una coincidencia mediante findindex y realizamos la busqueda
+    let herramientaEntregar = arrayHerramientasPrestadas.findIndex(herramienta => herramienta.id === id);
+    //mediante un splice eliminamos el elemento
+    arrayHerramientasPrestadas.splice(herramientaEntregar,1);
+    cargarHerramientasPrestadas();
+
+}
