@@ -3,7 +3,7 @@ const arrayHerramientas = [
     new Herramienta("C1", "martillo", 1),
 ];
 const arrayHerramientasPrestadas = [
-
+    
 ];
 
 
@@ -14,6 +14,7 @@ window.onload = () => {
 
 let cargarApp = () => {
     cargarHerramientas();
+    cargarHerramientasPrestadas();
 };
 
 // Crear la función que cargue las herramientas en la tabla
@@ -26,6 +27,7 @@ const cargarHerramientas = () => {
     // Después de que termine el ciclo debemos cargar el HTML mediante una búsqueda y innerHTML
     document.getElementById('tbodyInventario').innerHTML = herramientasHTML;
 };
+
 
 // Crear la función que cree el formato de la tabla
 const crearHerramientaHtml = (herramienta) => {
@@ -81,15 +83,58 @@ const eliminarHerramienta = (id,nombre) => {
 //funicon de prestamo de herramientas
 const prestarHerramienta = (id) => {
     //console.log(id)
+    let usuario = prompt("Ingresa nombre del ususario: ");
     let seleccionarHerramienta = arrayHerramientas.findIndex(equipo => equipo.id === id)
     //esta nos devolvera un atributo del objeto seleccionado 
     let estado = arrayHerramientas[seleccionarHerramienta]["estado"];
     if (estado == "IN"){
         //estado = "No disponible"
-        arrayHerramientas[seleccionarHerramienta]["estado"] = "OUT"
+        arrayHerramientas[seleccionarHerramienta]["estado"] = "OUT";
+        
+        // de la siguiente forma definimos los prestamos que iremos ingresando en nuesto array de herramientas prestadas
+        //definir una variable que llame al array y reciba un elemento de posicion para poder tener el objeto deseado
+        let herramientaSeleccionada = arrayHerramientas[seleccionarHerramienta];
+        //añadir mediante push la nueva clase que crearemos mediante herencia
+        arrayHerramientasPrestadas.push(
+            new Prestar(
+                herramientaSeleccionada.id,
+                herramientaSeleccionada.herramienta,
+                herramientaSeleccionada.cantidad,
+                herramientaSeleccionada.estado,
+                usuario));
+        console.log(arrayHerramientasPrestadas)
+
     }
+
     //console.log(estado);
     //cargamos el render de la pagina
     cargarHerramientas();
     cargarHerramientasPrestadas();
+} 
+
+//funcion cargarHerramientasPrestadas
+const cargarHerramientasPrestadas = () => {
+    //definir una ariable que nos guarde los arrays del html conforme los llamemos
+    let herramientaPrestada = "";
+    //crear un ciclo for of que itere directamente sobre los elementos del array de herramientas prestadas
+    for (prestar of arrayHerramientasPrestadas){
+        herramientaPrestada += cearHerramientasPrestadasHtml(prestar);
+    }
+    //llamar al documento y inyectar el html
+    document.getElementById("tbodyEnUso").innerHTML = herramientaPrestada;
 }
+
+const cearHerramientasPrestadasHtml = (prestar) => {
+    //creamos una variable que reciba los elementos iterados del array y con ella cremos nuestra estructura html y la retornamos
+    let estructura = `
+    <tr>
+        <th scope="row">${prestar.id}</th>
+        <td>${prestar.herramienta}</td>
+        <td>${prestar.cantidad}</td>
+        <td>${prestar.usuario}</td>
+    </tr>
+    `
+    //retornamos
+    return estructura
+}
+

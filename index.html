@@ -23,6 +23,31 @@
     </div>
     <!-------------------------------------------->
     <!--formulario de manipulacion de tabla-->
+    <p class="d-inline-flex gap-1">
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Operaciones
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+          <form id="formulario-operacion" onsubmit="return false">
+              <div class="agregar">
+                <div class="agregar_contenedor">
+                  <select name="" id="operacion" class="tipo-operacion">
+                    <option value="agregar" selected>Add</option>
+                    <option value="eliminar">Delete</option>
+                  </select>
+                  <input type="text" id="id" class="id-herramienta" placeholder="ID">
+                  <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
+                  <input type="text" id="cantidad" class="cantidad-herramienta" placeholder="Cantidad">
+                  <button class="btn btn-primary agregar_btn" onclick="agregarHerramienta()"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
+                </div>  
+              </div>
+            </form>
+        </div>
+    </div>
+
+    <!--importante
     <form id="formulario-operacion" onsubmit="return false">
       <div class="agregar">
         <div class="agregar_contenedor">
@@ -33,10 +58,11 @@
           <input type="text" id="id" class="id-herramienta" placeholder="ID">
           <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
           <input type="text" id="cantidad" class="cantidad-herramienta" placeholder="Cantidad">
-          <button class="agregar_btn" onclick="agregarHerramienta()"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
+          <button class="btn btn-primary agregar_btn" onclick="agregarHerramienta()"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
         </div>  
       </div>
-    </form>
+    </form>-->
+
     <!--crear los formatos de tablas-->
     <div class="contenedor-tablas">
         <div class="nombre-tabla">INVENTARIO</div>
@@ -57,52 +83,6 @@
                     <td>Otto</td>
                     <td>@mdo</td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">6</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">7</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">8</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">9</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">10</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
                 </tbody>
               </table>
         </div>
@@ -115,60 +95,15 @@
                     <th scope="col">Herramienta</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Usuario</th>
+                    <th scope="col">Devolver</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="tbodyEnUso">
                   <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>Estado</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">6</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">7</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">8</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">9</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">10</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
                   </tr>
                 </tbody>
               </table>
