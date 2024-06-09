@@ -26,7 +26,6 @@ class Herramienta {
     set cantidad(prestar_cantidad) {
         this._cantidad = prestar_cantidad;
     }
-
     get estado() {
         return this._estado;
     }

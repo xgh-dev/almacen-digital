@@ -24,28 +24,37 @@
     <!-------------------------------------------->
     <!--formulario de manipulacion de tabla-->
     <p class="d-inline-flex gap-1">
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Operaciones
-      </button>
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Agregar</button>
+      <!--boton eliminar-->
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEliminar" aria-expanded="false" aria-controls="collapseEliminar">Eliminar</button>
     </p>
     <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-          <form id="formulario-operacion" onsubmit="return false">
+       <div class="card card-body">
+          <form id="formulario-operacion-agregar" onsubmit="return false">
               <div class="agregar">
                 <div class="agregar_contenedor">
-                  <select name="" id="operacion" class="tipo-operacion">
-                    <option value="agregar" selected>Add</option>
-                    <option value="eliminar">Delete</option>
-                  </select>
+                  <button class="btn btn-primary agregar_btn" onclick="agregarHerramienta()">Agregar</button>
                   <input type="text" id="id" class="id-herramienta" placeholder="ID">
                   <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
                   <input type="text" id="cantidad" class="cantidad-herramienta" placeholder="Cantidad">
-                  <button class="btn btn-primary agregar_btn" onclick="agregarHerramienta()"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
                 </div>  
               </div>
             </form>
         </div>
-    </div>
+      </div>
+      <div class="collapse" id="collapseEliminar">
+        <div class="card card-body">
+           <form id="formulario-operacion-eliminar" onsubmit="return false">
+               <div class="agregar">
+                <div class="agregar_contenedor">
+                <button class="btn btn-primary agregar_btn" onclick="eliminarHerramientaFormulario()">Eliminar</button>
+                <input type="text" id="id" class="id-herramienta" placeholder="ID">
+                <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
+                </div>  
+               </div>
+             </form>
+         </div>
+       </div>
 
     <!--importante
     <form id="formulario-operacion" onsubmit="return false">

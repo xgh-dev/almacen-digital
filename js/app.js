@@ -17,6 +17,7 @@ let cargarApp = () => {
     cargarHerramientasPrestadas();
 };
 
+
 // Crear la función que cargue las herramientas en la tabla
 const cargarHerramientas = () => {
     // Creamos una variable que reciba strings vacíos que cada que ejecutemos esta función nos irá agregando más strings a la variable y estos los cargará en el HTML
@@ -48,22 +49,41 @@ const crearHerramientaHtml = (herramienta) => {
 const agregarHerramienta = () => {
     //escribir las llamadas realizadas al formulario y guardarlas en variables que hagan referencias a su nombre 
     //llamar al formulario 
-    let formulario = document.forms["formulario-operacion"];
+    let formulario = document.forms["formulario-operacion-agregar"];
     //obtener sus componentes mediante los imputs
-    let operacion = formulario["operacion"];
     let id = formulario["id"]
     let herramienta = formulario["nombre"];
     let cantidad = formulario["cantidad"];
     
     //seguiremos con la evaluacion de los inputs enviados
     if (id.value !== "" && herramienta.value !== "" && cantidad.value !== ""){
-        if (operacion.value === "agregar"){
-            arrayHerramientas.push(new Herramienta(id.value,herramienta.value,+cantidad.value))
-            //llamamos a las funciones que carguen la estructura del html
-            cargarHerramientas();
-        }
-    } else if (operacion.value === "eliminar" && (id.value !== "" || herramienta.value !== "")){
+        arrayHerramientas.push(new Herramienta(id.value,herramienta.value,+cantidad.value))
+        //llamamos a las funciones que carguen la estructura del html
+        cargarHerramientas();
+        
+    } /*else if (operacion.value === "eliminar" && (id.value !== "" || herramienta.value !== "")){
         eliminarHerramienta(id.value,herramienta.value);
+    }*/
+    limpiarInputs(formulario);
+}
+
+const eliminarHerramientaFormulario = () => {
+    let formulario = document.forms["formulario-operacion-eliminar"];
+    //obtener sus componentes mediante los imputs
+    let id = formulario["id"]
+    let herramienta = formulario["nombre"];
+    if (id.value !== "" || herramienta.value !== ""){
+        eliminarHerramienta(id.value,herramienta.value);
+    }
+    limpiarInputs(formulario);
+}
+
+//limpiar inputs
+const limpiarInputs = (formulario) => {
+    //recibe la llamada de un formulario, este debe iterar el formulario y a sus elementos agregar el valor '' para indicar que es un string vacio y poder "borrar" lo que se escribio anteriormente
+    for (input of formulario){
+        //console.log(input)
+        input.value = '';
     }
 }
 
@@ -83,17 +103,16 @@ const eliminarHerramienta = (id,nombre) => {
 //funicon de prestamo de herramientas
 const prestarHerramienta = (id) => {
     //console.log(id)
-    let usuario = prompt("Ingresa nombre del ususario: ");
     let seleccionarHerramienta = arrayHerramientas.findIndex(equipo => equipo.id === id)
     //esta nos devolvera un atributo del objeto seleccionado 
-    let estado = arrayHerramientas[seleccionarHerramienta]["estado"];
-    if (estado == "IN"){
-        //estado = "No disponible"
-        arrayHerramientas[seleccionarHerramienta]["estado"] = "OUT";
-        
+    let estadoActual = arrayHerramientas[seleccionarHerramienta]["estado"];
+    if (estadoActual == "IN"){
+        let usuario = prompt("Ingresa nombre del ususario: ");
         // de la siguiente forma definimos los prestamos que iremos ingresando en nuesto array de herramientas prestadas
         //definir una variable que llame al array y reciba un elemento de posicion para poder tener el objeto deseado
         let herramientaSeleccionada = arrayHerramientas[seleccionarHerramienta];
+        herramientaSeleccionada.estado = "OUT"
+        console.log(herramientaSeleccionada)
         //añadir mediante push la nueva clase que crearemos mediante herencia
         arrayHerramientasPrestadas.push(
             new Prestar(
@@ -103,7 +122,8 @@ const prestarHerramienta = (id) => {
                 herramientaSeleccionada.estado,
                 usuario));
         console.log(arrayHerramientasPrestadas)
-
+    } else {
+        alert("herramienta en uso")
     }
 
     //console.log(estado);
@@ -148,6 +168,17 @@ const devolverrHerramienta = (id) => {
     let herramientaEntregar = arrayHerramientasPrestadas.findIndex(herramienta => herramienta.id === id);
     //mediante un splice eliminamos el elemento
     arrayHerramientasPrestadas.splice(herramientaEntregar,1);
-    cargarHerramientasPrestadas();
+    //cargarHerramientasPrestadas();
+    cambiarEstadoInventario(id);
+    cargarApp()
+}
 
+//funcion que cambie el estado de el inventario al devolver la herramienta
+const cambiarEstadoInventario = (id) => {
+    //mediante el id realizar la busqueda con findIndex que nos encuentre el indice del elemento, para poder llamar al elemento especifico del array mediante la variable en la que almacenemos el indice
+    let cambiarEstado = arrayHerramientas.findIndex(herramienta => herramienta.id == id);
+    //llamamos al elemento del array mediante el indice encontra y cambiamos el valor de su estado
+    arrayHerramientas[cambiarEstado].estado = "IN";
+    //funciona
+    //console.log(arrayHerramientas[cambiarEstado])    
 }
