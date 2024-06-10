@@ -182,3 +182,55 @@ const cambiarEstadoInventario = (id) => {
     //funciona
     //console.log(arrayHerramientas[cambiarEstado])    
 }
+
+const buscarHerramientaFormulario = () => {
+    let lista = [];
+    //crear una variable que llame al formulario
+    let buscarFormulario = document.forms["formulario-operacion-buscar"];
+    //guardamos los valores
+    //no olvidar indicar el value a la hora de hacer la llamada
+    let porID = buscarFormulario["id"].value
+    let porNombre = buscarFormulario["nombre"].value
+    let porEstado = buscarFormulario["estado"].value
+    //console.log(porID)
+    //console.log(porNombre)
+    //console.log(porEstado)
+    for (let i = 0; i < arrayHerramientas.length; i++){
+        let busqueda = arrayHerramientas[i]
+        if (busqueda.id === porID || busqueda.nombre === porNombre || busqueda.estado === porEstado){
+            lista.push(busqueda)
+        }
+    }
+    limpiarInputs(buscarFormulario)
+    console.log(lista)
+    console.log("funciona")
+    //retornamos la lista
+    cargarHerramientasBuscadas(lista)
+    
+}
+
+const cargarHerramientasBuscadas = (lista) => {
+    //creamos una variable que reciba strings en los que guardaremos nustras estructuras html
+    let renderBuscarHtml = '';
+    //crear un ciclo for que nos itere las los elementos del array y obtengamos los dados por la variable indices
+    for (herramienta of lista){
+        renderBuscarHtml += crearHerramientaBuscadaHtml(herramienta)
+    }
+    //insertamos los htmnl
+    document.getElementById('tbodyInventario').innerHTML = renderBuscarHtml;
+};
+
+// Crear la función que cree el formato de la tabla
+const crearHerramientaBuscadaHtml = (herramienta) => {
+    // Creamos una variable que guarde la estructura HTML
+    let ingresoTemplate = `
+        <tr>
+            <th scope="row">${herramienta.id}</th>
+            <td>${herramienta.herramienta}</td>
+            <td>${herramienta.cantidad}</td>
+            <td><button class="boton-estado" onclick="prestarHerramienta('${herramienta.id}')">${herramienta.estado}</button></td> 
+        </tr>
+    `;
+    // Retornamos la variable
+    return ingresoTemplate;
+};

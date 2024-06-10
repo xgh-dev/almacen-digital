@@ -24,16 +24,21 @@
     <!-------------------------------------------->
     <!--formulario de manipulacion de tabla-->
     <p class="d-inline-flex gap-1">
-      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Agregar</button>
+      <!--boton agregar-->
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgregar" aria-expanded="false" aria-controls="collapseAgregar">Agregar</button>
       <!--boton eliminar-->
       <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEliminar" aria-expanded="false" aria-controls="collapseEliminar">Eliminar</button>
+      <!--boton buscar-->
+      <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBuscar" aria-expanded="false" aria-controls="collapseBuscar">Buscar</button>
+      
+
     </p>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="collapseAgregar">
        <div class="card card-body">
           <form id="formulario-operacion-agregar" onsubmit="return false">
               <div class="agregar">
                 <div class="agregar_contenedor">
-                  <button class="btn btn-primary agregar_btn" onclick="agregarHerramienta()">Agregar</button>
+                  <button class="btn btn-success agregar_btn" onclick="agregarHerramienta()">Agregar</button>
                   <input type="text" id="id" class="id-herramienta" placeholder="ID">
                   <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
                   <input type="text" id="cantidad" class="cantidad-herramienta" placeholder="Cantidad">
@@ -47,14 +52,29 @@
            <form id="formulario-operacion-eliminar" onsubmit="return false">
                <div class="agregar">
                 <div class="agregar_contenedor">
-                <button class="btn btn-primary agregar_btn" onclick="eliminarHerramientaFormulario()">Eliminar</button>
+                <button class="btn btn-danger agregar_btn" onclick="eliminarHerramientaFormulario()">Eliminar</button>
                 <input type="text" id="id" class="id-herramienta" placeholder="ID">
                 <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
                 </div>  
                </div>
              </form>
-         </div>
-       </div>
+        </div>
+      </div>
+      <div class="collapse" id="collapseBuscar">
+        <div class="card card-body">
+           <form id="formulario-operacion-buscar" onsubmit="return false">
+               <div class="agregar">
+                <div class="agregar_contenedor">
+                <button class="btn btn-warning agregar_btn" onclick="buscarHerramientaFormulario()">Buscar</button>
+                <input type="text" id="id" class="id-herramienta" placeholder="ID">
+                <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
+                <input type="text" id="estado" class="estado-herramienta" placeholder="Estado">
+                </div>  
+               </div>
+             </form>
+        </div>
+      </div>
+
 
     <!--importante
     <form id="formulario-operacion" onsubmit="return false">
