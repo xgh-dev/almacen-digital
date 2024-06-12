@@ -45,15 +45,19 @@ body{
 /*editamos el titulo*/
 .nombre-empresa{
     text-align: center;
-
 }
 
 /*editamos el nombre de la app*/
-
 .nombre-programa{
     text-align: center;
 }
 
+/*definir un media query que nos cambie el texto con respecto a su tamaño*/
+@media (width < 454px ){
+    .contenedor-datos{
+        font-size: 30px;
+    }
+}
 
 
 th{
@@ -82,4 +86,8 @@ th{
 .boton-estado{
     width: 40px;
     box-sizing: border-box;
+}
+
+.contenedor-botones{
+    margin-top: 10px;
 }

@@ -202,11 +202,10 @@ const buscarHerramientaFormulario = () => {
         }
     }
     limpiarInputs(buscarFormulario)
-    console.log(lista)
-    console.log("funciona")
+    //console.log(lista)
+    //console.log("funciona")
     //retornamos la lista
     cargarHerramientasBuscadas(lista)
-    
 }
 
 const cargarHerramientasBuscadas = (lista) => {
@@ -234,3 +233,5 @@ const crearHerramientaBuscadaHtml = (herramienta) => {
     // Retornamos la variable
     return ingresoTemplate;
 };
+
+//crear una clase que ingrese valores de tiempo para poder crear un archivo con los registros de tiempo

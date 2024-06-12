@@ -11,19 +11,20 @@
 </head>
 <body>
     <!--crear la zona de presentacion de la app-->
-    <div class="cabecero">
-        <div class="contenedor-datos">
-            <div class="nombre-empresa">
+    <div class="cabecero container-fluid">
+        <div class="contenedor-datos container-fluid">
+            <div class="nombre-empresa container-fluid">
                 CEWS
             </div>
-            <div class="nombre-programa">
+            <div class="nombre-programa container-fluid">
                 ALMACEN DIGITAL
             </div>
             </div>
     </div>
     <!-------------------------------------------->
     <!--formulario de manipulacion de tabla-->
-    <p class="d-inline-flex gap-1">
+    <!--<p class="d-inline-flex gap-1">-->
+    <div class="contenedor-botones container-fluid d-flex justify-content-evenly">  
       <!--boton agregar-->
       <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAgregar" aria-expanded="false" aria-controls="collapseAgregar">Agregar</button>
       <!--boton eliminar-->
@@ -31,12 +32,13 @@
       <!--boton buscar-->
       <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBuscar" aria-expanded="false" aria-controls="collapseBuscar">Buscar</button>
       <button class="btn btn-primary" type="button" onclick="cargarHerramientas()">Limpiar</button>
-    </p>
+    </div>
+    <!--</p>-->
     <div class="collapse" id="collapseAgregar">
        <div class="card card-body">
           <form id="formulario-operacion-agregar" onsubmit="return false">
               <div class="agregar">
-                <div class="agregar_contenedor">
+                <div class="agregar_contenedor text-center">
                   <button class="btn btn-success agregar_btn" onclick="agregarHerramienta()">Agregar</button>
                   <input type="text" id="id" class="id-herramienta" placeholder="ID">
                   <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
@@ -50,7 +52,7 @@
         <div class="card card-body">
            <form id="formulario-operacion-eliminar" onsubmit="return false">
                <div class="agregar">
-                <div class="agregar_contenedor">
+                <div class="agregar_contenedor text-center">
                 <button class="btn btn-danger agregar_btn" onclick="eliminarHerramientaFormulario()">Eliminar</button>
                 <input type="text" id="id" class="id-herramienta" placeholder="ID">
                 <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
@@ -63,7 +65,7 @@
         <div class="card card-body">
            <form id="formulario-operacion-buscar" onsubmit="return false">
                <div class="agregar">
-                <div class="agregar_contenedor">
+                <div class="agregar_contenedor text-center">
                 <button class="btn btn-warning agregar_btn" onclick="buscarHerramientaFormulario()">Buscar</button>
                 <input type="text" id="id" class="id-herramienta" placeholder="ID">
                 <input type="text" id="nombre" class="nombre-heramienta" placeholder="Herramienta">
