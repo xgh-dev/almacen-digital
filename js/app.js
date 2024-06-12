@@ -197,7 +197,7 @@ const buscarHerramientaFormulario = () => {
     //console.log(porEstado)
     for (let i = 0; i < arrayHerramientas.length; i++){
         let busqueda = arrayHerramientas[i]
-        if (busqueda.id === porID || busqueda.nombre === porNombre || busqueda.estado === porEstado){
+        if (busqueda.id == porID || busqueda.nombre == porNombre || busqueda.estado == porEstado){
             lista.push(busqueda)
         }
     }
