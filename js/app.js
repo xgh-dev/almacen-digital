@@ -111,17 +111,17 @@ const prestarHerramienta = (id) => {
         // de la siguiente forma definimos los prestamos que iremos ingresando en nuesto array de herramientas prestadas
         //definir una variable que llame al array y reciba un elemento de posicion para poder tener el objeto deseado
         let herramientaSeleccionada = arrayHerramientas[seleccionarHerramienta];
-        herramientaSeleccionada.estado = "OUT"
-        console.log(herramientaSeleccionada)
+        herramientaSeleccionada.estado = "OUT";
+        //console.log(herramientaSeleccionada)
         //añadir mediante push la nueva clase que crearemos mediante herencia
         arrayHerramientasPrestadas.push(
             new Prestar(
-                herramientaSeleccionada.id,
+                herramientaSeleccionada.id,//variable que contiene al objeto.elemento get
                 herramientaSeleccionada.herramienta,
                 herramientaSeleccionada.cantidad,
                 herramientaSeleccionada.estado,
                 usuario));
-        console.log(arrayHerramientasPrestadas)
+        //console.log(arrayHerramientasPrestadas)
     } else {
         alert("herramienta en uso")
     }
@@ -137,7 +137,7 @@ const cargarHerramientasPrestadas = () => {
     //definir una ariable que nos guarde los arrays del html conforme los llamemos
     let herramientaPrestada = "";
     //crear un ciclo for of que itere directamente sobre los elementos del array de herramientas prestadas
-    for (prestar of arrayHerramientasPrestadas){
+    for (let prestar of arrayHerramientasPrestadas){
         herramientaPrestada += cearHerramientasPrestadasHtml(prestar);
     }
     //llamar al documento y inyectar el html
@@ -212,7 +212,7 @@ const cargarHerramientasBuscadas = (lista) => {
     //creamos una variable que reciba strings en los que guardaremos nustras estructuras html
     let renderBuscarHtml = '';
     //crear un ciclo for que nos itere las los elementos del array y obtengamos los dados por la variable indices
-    for (herramienta of lista){
+    for (let herramienta of lista){
         renderBuscarHtml += crearHerramientaBuscadaHtml(herramienta)
     }
     //insertamos los htmnl
