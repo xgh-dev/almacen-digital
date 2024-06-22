@@ -94,10 +94,6 @@ const eliminarHerramienta = (id,nombre) => {
     cargarHerramientas();
 }
 
-//funicon de busqueda para despues
-/*const buscarHerramienta = (id,nombre) => {
-
-}*/
 
 
 //funicon de prestamo de herramientas
@@ -197,7 +193,7 @@ const buscarHerramientaFormulario = () => {
     //console.log(porEstado)
     for (let i = 0; i < arrayHerramientas.length; i++){
         let busqueda = arrayHerramientas[i]
-        if (busqueda.id == porID || busqueda.nombre == porNombre || busqueda.estado == porEstado){
+        if (busqueda.id == porID || busqueda.herramienta == porNombre || busqueda.estado == porEstado){
             lista.push(busqueda)
         }
     }
