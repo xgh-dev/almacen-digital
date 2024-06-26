@@ -99,34 +99,57 @@ const eliminarHerramienta = (id,nombre) => {
 //funicon de prestamo de herramientas
 const prestarHerramienta = (id) => {
     //console.log(id)
-    let seleccionarHerramienta = arrayHerramientas.findIndex(equipo => equipo.id === id)
+    let seleccionarHerramienta = arrayHerramientas.findIndex(equipo => equipo.id === id);
     //esta nos devolvera un atributo del objeto seleccionado 
     let estadoActual = arrayHerramientas[seleccionarHerramienta]["estado"];
     if (estadoActual == "IN"){
-        let usuario = prompt("Ingresa nombre del ususario: ");
-        // de la siguiente forma definimos los prestamos que iremos ingresando en nuesto array de herramientas prestadas
-        //definir una variable que llame al array y reciba un elemento de posicion para poder tener el objeto deseado
-        let herramientaSeleccionada = arrayHerramientas[seleccionarHerramienta];
-        herramientaSeleccionada.estado = "OUT";
-        //console.log(herramientaSeleccionada)
-        //añadir mediante push la nueva clase que crearemos mediante herencia
-        arrayHerramientasPrestadas.push(
-            new Prestar(
-                herramientaSeleccionada.id,//variable que contiene al objeto.elemento get
-                herramientaSeleccionada.herramienta,
-                herramientaSeleccionada.cantidad,
-                herramientaSeleccionada.estado,
-                usuario));
-        //console.log(arrayHerramientasPrestadas)
+        const pedirUsuario = () => {
+            let ingresarUsuario = prompt("Ingresa nombre del usuario:");
+            if (ingresarUsuario !== null && ingresarUsuario !== "") {
+                return ingresarUsuario;
+            } else if (ingresarUsuario === null) {
+                return null; // El usuario canceló el prompt
+            } else {
+                alert("Debe ingresar un nombre válido.");
+                return pedirUsuario(); // Volver a pedir el usuario si el input está vacío
+            }
+        }
+
+        let usuario = pedirUsuario();
+        //cuando un promt se manda mediante cancelar se manda con un valor null, por lo tamto debemos asignar una condicion que evalue la variable para comprobar si su  valor es un null o una cadena de texto
+
+        //en caso de no ser null y ser una cadena de texto
+        if (usuario !== null) {
+            // de la siguiente forma definimos los prestamos que iremos ingresando en nuesto array de herramientas prestadas
+            //definir una variable que llame al array y reciba un elemento de posicion para poder tener el objeto deseado
+            let herramientaSeleccionada = arrayHerramientas[seleccionarHerramienta];
+            herramientaSeleccionada.estado = "OUT";
+            //console.log(herramientaSeleccionada)
+            //añadir mediante push la nueva clase que crearemos mediante herencia
+            arrayHerramientasPrestadas.push(
+                new Prestar(
+                    herramientaSeleccionada.id,//variable que contiene al objeto.elemento get
+                    herramientaSeleccionada.herramienta,
+                    herramientaSeleccionada.cantidad,
+                    herramientaSeleccionada.estado,
+                    usuario
+                )
+            );
+            //console.log(arrayHerramientasPrestadas)
+        } else {
+            //en caso de ser null
+            alert("No se realizará ninguna acción");
+        }
     } else {
-        alert("herramienta en uso")
+        alert("Herramienta en uso");
     }
 
     //console.log(estado);
     //cargamos el render de la pagina
     cargarHerramientas();
     cargarHerramientasPrestadas();
-} 
+}
+
 
 //funcion cargarHerramientasPrestadas
 const cargarHerramientasPrestadas = () => {
