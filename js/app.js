@@ -1,6 +1,14 @@
+
 // Crear los arrays que nos guarden nuestros objetos
 const arrayHerramientas = [
     new Herramienta("C1", "martillo", 1),
+    new Herramienta("C2", "tijeras de aluminio", 1),
+    new Herramienta("C3", "taladro", 1),
+    new Herramienta("C4", "desarmador +", 1),
+    new Herramienta("C5", "desarmador -", 1),
+    new Herramienta("C6", "flexometro", 1),
+    new Herramienta("C7", "llaves allen", 6),
+    new Herramienta("C8", "pinsas de corte", 1),
 ];
 const arrayHerramientasPrestadas = [
     
@@ -103,18 +111,25 @@ const prestarHerramienta = (id) => {
     //esta nos devolvera un atributo del objeto seleccionado 
     let estadoActual = arrayHerramientas[seleccionarHerramienta]["estado"];
     if (estadoActual == "IN"){
+        //crear una funcion que nos pedira el usurario mediante un if comprobara si el valor dado es un string con al menos 1 caracter
         const pedirUsuario = () => {
+            //variable que pide el valor y lo almacena
             let ingresarUsuario = prompt("Ingresa nombre del usuario:");
+            //if de validacion, el valor de la variable debe ser diferente a un valor nulo o un string vacipn
             if (ingresarUsuario !== null && ingresarUsuario !== "") {
+                //retornamos el valor
                 return ingresarUsuario;
             } else if (ingresarUsuario === null) {
+                //definimos un else if en caso de que el valor sea igual a null, debemos comprobar el null por que cuando cancelamo el prompt se manda un valor null
                 return null; // El usuario canceló el prompt
             } else {
+                //en caso de que se mande un string vacio indicamos una alerta
                 alert("Debe ingresar un nombre válido.");
+                //retornamos otra llamada a la funcion
                 return pedirUsuario(); // Volver a pedir el usuario si el input está vacío
             }
         }
-
+        
         let usuario = pedirUsuario();
         //cuando un promt se manda mediante cancelar se manda con un valor null, por lo tamto debemos asignar una condicion que evalue la variable para comprobar si su  valor es un null o una cadena de texto
 
